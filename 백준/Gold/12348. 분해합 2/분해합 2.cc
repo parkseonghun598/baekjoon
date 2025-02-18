@@ -1,4 +1,3 @@
-
 #include<iostream>
 using namespace std;
 typedef long long ll;
@@ -18,7 +17,7 @@ int main() {
 
     ll n;
     cin >> n;
-    for (ll x = n - 180; x <= n - 1; x++) {
+    for (ll x = n - 162; x <= n - 1; x++) {
         if (f(x) == n) {
             cout << x;
             return 0;

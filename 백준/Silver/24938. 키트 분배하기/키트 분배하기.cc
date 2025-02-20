@@ -1,36 +1,31 @@
 #include <iostream>
-
 using namespace std;
+typedef long long ll;
+
+ll total = 0;
+ll ans = 0;
+ll arr[200000];
 
 int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(NULL);
+	ios::sync_with_stdio(0);
+	cin.tie(0);
 
-    int N, sum=0;
-    cin >> N;
-    int* arr = new int[N];
-    for (int i = 0; i < N; i ++)
-    {
-        cin >> arr[i];
-        sum += arr[i];
-    }
-    const int kit = sum / N;
-    int count = 0;
-    for (int i = 0; i < N-1; i++) {
-        
-        while (true) {
-            if (arr[i] == kit)break;
-            else if (arr[i] > kit) {
-                arr[i]--;
-                arr[i + 1]++;
-                count++;
-            }
-            else if (arr[i] < kit) {
-                arr[i]++;
-                arr[i + 1]--;
-                count++;
-            }
-        }
-    }
-    cout << count;
+	int N; cin >> N;
+	for (int i = 0; i < N; i++) {
+		ll& x = arr[i];
+		cin >> x;
+		total += x;
+	}
+
+	total /= N;
+	N--;
+
+	for (int i = 0; i < N; i++) {
+		ll& x = arr[i], & y = arr[i + 1];
+		ll temp = total - x;
+		ans += abs(temp);
+		y -= temp;
+	}
+
+	cout << ans;
 }
